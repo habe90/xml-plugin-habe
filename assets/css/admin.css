@@ -1,0 +1,596 @@
+/**
+ * Admin CSS for XML Product Sync Enhanced
+ * 
+ * @package XML_Product_Sync_Enhanced
+ */
+
+/* General Layout */
+.xpse-dashboard,
+.xpse-settings,
+.xpse-logs,
+.xpse-categories,
+.xpse-tools {
+    max-width: 1200px;
+}
+
+/* Card Layout */
+.xpse-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.xpse-card h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #1d2327;
+}
+
+.xpse-card h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #1d2327;
+}
+
+/* Row Layout */
+.xpse-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.xpse-row .xpse-card {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+@media (max-width: 782px) {
+    .xpse-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .xpse-row .xpse-card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Sync Status */
+.xpse-status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-idle .status-dot { background-color: #8c8f94; }
+.status-running .status-dot { background-color: #007cba; animation: pulse 1.5s infinite; }
+.status-completed .status-dot { background-color: #00a32a; }
+.status-failed .status-dot { background-color: #d63638; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-text {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* Progress Bar */
+.xpse-progress {
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f1;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #007cba;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+}
+
+/* Statistics Grid */
+.xpse-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: #f6f7f7;
+    border-radius: 4px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #1d2327;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #646970;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Actions */
+.xpse-actions {
+    margin-top: 20px;
+}
+
+.xpse-actions .button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/* Info Table */
+.xpse-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.xpse-info-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.xpse-info-table td:first-child {
+    font-weight: 600;
+    color: #646970;
+    width: 40%;
+}
+
+/* Log Levels */
+.log-level {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.level-debug { background-color: #8c8f94; }
+.level-info { background-color: #007cba; }
+.level-warning { background-color: #f56e28; }
+.level-error { background-color: #d63638; }
+.level-critical { background-color: #8b0000; }
+
+/* Logs */
+.xpse-logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.xpse-logs-filters {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.xpse-logs-filters label {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+.xpse-logs-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.xpse-logs-table table {
+    margin-top: 20px;
+}
+
+.column-timestamp { width: 15%; }
+.column-level { width: 10%; }
+.column-message { width: 40%; }
+.column-session { width: 20%; }
+.column-context { width: 15%; }
+
+.log-context {
+    max-height: 200px;
+    overflow-y: auto;
+    background: #f6f7f7;
+    padding: 10px;
+    font-size: 11px;
+    white-space: pre-wrap;
+}
+
+/* Error Summary */
+.xpse-error-summary {
+    margin-bottom: 30px;
+}
+
+.xpse-error-logs {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+}
+
+.xpse-error-item {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.xpse-error-item:last-child {
+    border-bottom: none;
+}
+
+.error-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.error-time {
+    font-size: 12px;
+    color: #646970;
+}
+
+.error-level {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.xpse-error-item.level-error .error-level {
+    background-color: #d63638;
+}
+
+.xpse-error-item.level-critical .error-level {
+    background-color: #8b0000;
+}
+
+.error-message {
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.error-context details {
+    margin-top: 10px;
+}
+
+.error-context summary {
+    cursor: pointer;
+    color: #007cba;
+    font-size: 12px;
+}
+
+.error-context pre {
+    margin-top: 10px;
+    background: #f6f7f7;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 11px;
+    overflow-x: auto;
+}
+
+/* Pagination */
+.xpse-logs-pagination {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f1;
+    color: #646970;
+    font-size: 14px;
+}
+
+.xpse-no-logs {
+    text-align: center;
+    padding: 40px 20px;
+    color: #646970;
+}
+
+.xpse-logs-cleanup {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin-top: 30px;
+}
+
+.xpse-logs-cleanup h3 {
+    margin-top: 0;
+    color: #d63638;
+}
+
+.xpse-logs-cleanup label {
+    display: block;
+    margin: 10px 0;
+}
+
+/* Settings */
+.nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.xpse-settings-actions {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f1;
+}
+
+.xpse-secondary-actions {
+    margin-top: 30px;
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.xpse-secondary-actions h3 {
+    margin-top: 0;
+    color: #1d2327;
+}
+
+.xpse-action-group {
+    margin: 20px 0;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+}
+
+.xpse-action-group h4 {
+    margin: 0 0 10px 0;
+    color: #1d2327;
+}
+
+.xpse-action-group p {
+    margin: 5px 0 15px 0;
+    color: #646970;
+    font-size: 14px;
+}
+
+/* Categories */
+.xpse-add-mapping {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.xpse-existing-mappings {
+    margin-top: 30px;
+}
+
+.xpse-category-tree {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.xpse-tree {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.xpse-tree li {
+    margin: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.xpse-tree li:before {
+    content: '├── ';
+    position: absolute;
+    left: 0;
+    color: #8c8f94;
+}
+
+.xpse-tree li:last-child:before {
+    content: '└── ';
+}
+
+.xpse-tree ul {
+    margin: 5px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.xpse-tree ul li {
+    padding-left: 40px;
+}
+
+.category-count {
+    color: #646970;
+    font-size: 12px;
+}
+
+/* Tools */
+.xpse-tool-form {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.xpse-sync-options {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+
+.xpse-system-info-table,
+.xpse-debug-info {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+
+.xpse-system-info-table th,
+.xpse-system-info-table td,
+.xpse-debug-info th,
+.xpse-debug-info td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f1;
+    text-align: left;
+}
+
+.xpse-system-info-table th,
+.xpse-debug-info th {
+    font-weight: 600;
+    color: #646970;
+    width: 40%;
+}
+
+.xpse-tool-group {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f6f7f7;
+    border-radius: 4px;
+}
+
+.xpse-tool-group h3 {
+    margin-top: 0;
+}
+
+.xpse-tool-group .button {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+/* Connection Result */
+.connection-result {
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.connection-result.success {
+    background: #f0f6fc;
+    border-left-color: #00a32a;
+}
+
+.connection-result.error {
+    background: #fcf0f1;
+    border-left-color: #d63638;
+}
+
+.connection-result h4 {
+    margin: 0 0 10px 0;
+}
+
+.connection-result ul {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+.connection-result li {
+    margin: 5px 0;
+}
+
+/* Notices */
+.notice {
+    margin: 15px 0;
+    padding: 12px;
+    border-left: 4px solid;
+    background: #fff;
+}
+
+.notice-success {
+    border-left-color: #00a32a;
+}
+
+.notice-error {
+    border-left-color: #d63638;
+}
+
+.notice-warning {
+    border-left-color: #f56e28;
+}
+
+.notice-info {
+    border-left-color: #007cba;
+}
+
+/* Responsive */
+@media (max-width: 782px) {
+    .xpse-logs-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .xpse-logs-filters {
+        width: 100%;
+    }
+    
+    .xpse-logs-filters select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .xpse-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .xpse-tool-group .button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Loading States */
+.xpse-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.xpse-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007cba;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
